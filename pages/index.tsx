@@ -34,6 +34,7 @@ const Home: NextPage = () => {
 
   return (
     <div className='max-w-6xl mx-auto px-4'>
+      <h1 className="text-xl mb-2">hello {user.name} welcome to this coolest todo app on the planet!</h1>
       <Input type="text" id="searchTerm" value={searchTerm} onChange={(e) => setSearchTerm(() => e.target.value)} placeholder={!todos?.length ? 'Add Todos Search' : 'Search by todo tile or category'} disabled={!todos?.length} />
       {/* <Button onClick={setShowForm(!showForm)}>Add Todo</Button> */}
 
