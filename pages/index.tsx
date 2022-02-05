@@ -31,17 +31,16 @@ const Home: NextPage = () => {
   // filter todos by search term
   const filteredTodos = searchTerm ? todos.filter(todo => todo.title.toLowerCase().includes(searchTerm.toLowerCase()) || todo?.category?.toLowerCase().includes(searchTerm.toLowerCase())) : todos;
 
-
   return (
     <div className='max-w-6xl mx-auto px-4'>
       <h1 className="text-xl mb-2">hello {user.name} welcome to this coolest todo app on the planet!</h1>
       <Input type="text" id="searchTerm" value={searchTerm} onChange={(e) => setSearchTerm(() => e.target.value)} placeholder={!todos?.length ? 'Add Todos Search' : 'Search by todo tile or category'} disabled={!todos?.length} />
-      {/* <Button onClick={setShowForm(!showForm)}>Add Todo</Button> */}
 
-      <div className="shadow-lg p-4 max-w-4xl rounded-md mx-auto">
+      <div className="shadow-lg p-4 max-w-4xl rounded-md mx-auto my-8">
         <CreateTodoItemForm createTodoItem={setTodos} />
       </div>
       <div className='py-8'>
+  
         <TodoList todos={filteredTodos} setTodos={setTodos} />
       </div>
     </div>
