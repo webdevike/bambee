@@ -18,36 +18,33 @@ const TodoList = ({ todos, setTodos }: { todos: Todo[], setTodos: SetTodos }): J
   const toggleComplete = (todoId: string): void => {
     // find the todo in the array
     // set the completed property to the opposite of what it is
-    const updatedTodos = todos.map((todo) => {
-      if (todo?.id === todoId) {
+
+    // find and update item by id
+    setTodos((prevTodos) => prevTodos.map((todo) => {
+      if (todo.id === todoId) {
         return {
           ...todo,
-          completed: !todo.completed,
+          completed: !todo.completed
         }
       }
-    }) as Todo[];
-
-    // update the complete value in todos
-    
-    setTodos((prevTodos) => [...prevTodos]);
+      return todo
+    }))
   }
 
   const updateTodo = (todoId: string, updatedTodo: { title: string, category: string }): void => {
     // find the todo in the array
     // update the todo with the new values
-    const updatedTodos = todos.map((todo) => {
-      if (todo?.id === todoId) {
+
+    // find the todo in the array
+    setTodos((prevTodos) => prevTodos.map((todo) => {
+      if (todo.id === todoId) {
         return {
           ...todo,
           ...updatedTodo
         }
       }
-    }) as Todo[];
-
-    setTodos((prevTodos) => [
-      ...prevTodos,
-      ...updatedTodos,
-    ])
+      return todo
+    }))
   }
 
   return (
