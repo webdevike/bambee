@@ -22,7 +22,7 @@ const UpdateTodoItemForm = ({ todoId, updateTodo }: { todoId: string, updateTodo
 
   return (
     <>
-      <form onSubmit={handleSubmit} className="absolute right-0 top-16 bg-white shadow-md p-4">
+      <form onSubmit={handleSubmit} className="absolute z-40 right-0 top-16 bg-white shadow-md p-4">
         <label htmlFor="title">Title</label>
         <Input type="text" id="title" value={title} onChange={(e) => setTitle(() => e.target.value)} />
         <label htmlFor="category">Category</label>
