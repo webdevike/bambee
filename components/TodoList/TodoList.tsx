@@ -12,16 +12,14 @@ const TodoList = ({ todos, setTodos }: { todos: Todo[], setTodos: SetTodos }): J
 
   const deleteTodo = (todoId: string): void => {
     // remove the todo from the array
-    setTodos([
-      ...todos.filter(todo => todo.id !== todoId),
-    ])
+    setTodos((prevTodos) => prevTodos.filter((todo) => todo.id !== todoId))
   }
 
   const toggleComplete = (todoId: string): void => {
     // find the todo in the array
     // set the completed property to the opposite of what it is
     const updatedTodos = todos.map((todo) => {
-      if (todo.id === todoId) {
+      if (todo?.id === todoId) {
         return {
           ...todo,
           completed: !todo.completed,
@@ -29,14 +27,16 @@ const TodoList = ({ todos, setTodos }: { todos: Todo[], setTodos: SetTodos }): J
       }
     }) as Todo[];
 
-    setTodos(updatedTodos)
+    // update the complete value in todos
+    
+    setTodos((prevTodos) => [...prevTodos]);
   }
 
   const updateTodo = (todoId: string, updatedTodo: { title: string, category: string }): void => {
     // find the todo in the array
     // update the todo with the new values
     const updatedTodos = todos.map((todo) => {
-      if (todo.id === todoId) {
+      if (todo?.id === todoId) {
         return {
           ...todo,
           ...updatedTodo
@@ -44,7 +44,10 @@ const TodoList = ({ todos, setTodos }: { todos: Todo[], setTodos: SetTodos }): J
       }
     }) as Todo[];
 
-    setTodos(updatedTodos)
+    setTodos((prevTodos) => [
+      ...prevTodos,
+      ...updatedTodos,
+    ])
   }
 
   return (
